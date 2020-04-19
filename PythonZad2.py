@@ -1,0 +1,5 @@
+x = int(input('Podaj pierwszą liczbe\n'))
+y = int(input('Podaj druga liczbe\n'))
+print(x)
+print(y)
+print(x*y)
