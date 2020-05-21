@@ -1,0 +1,22 @@
+znak = str(input("Wprowadź odpowiedni znak"))
+
+if(znak == 'a'):
+  print("Obliczamy pole kwadratu")
+  a = int(input("Wprowadź dlugosc boku a"))
+  print("Pole kwadratu o boku " + str(a) + " = " + str(a*a))
+elif(znak == 'b'):
+  print("Obliczamy pole prostokata")
+  a = int(input("Wprowadź dlugosc boku a "))
+  b = int(input("Wprowadź dlugość boku b "))
+  print("Pole prostokąta o bokach " + str(a) + " i " + str(b) + " = " + str(a*b) )
+elif(znak == 'c'):
+  print("Obliczamy pole trójkąta")
+  a = int(input("Wprowadź dlugosc podstawy a "))
+  h = int(input("Wprowadź dlugosc wysokości h "))
+  print("Pole trójąta o podstawie " + str(a) + " i wysokości " + str(h) + " = " + str((a*h)/2)) 
+elif(znak == 'd'):
+  print("Obliczamy pole trapezu")
+  a = int(input("Wprowadź dlugosc podstawy a "))
+  b = int(input("Wprowadź dlugosc podstawy b "))
+  h = int(input("Wprowadź dlugosc wysokości h "))
+  print("Pole trapezu o podstawach " + str(a) + " i " + str(b) + " i wysokości " + h + " = " + str(((a+b)*h)/2) ) 

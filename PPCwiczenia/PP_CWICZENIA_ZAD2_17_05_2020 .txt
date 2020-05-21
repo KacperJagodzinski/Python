@@ -1,0 +1,6 @@
+liczba = int(input("Wprowadz liczbe dwucyfrowa"))
+digits = [int(x) for x in str(liczba)]
+if(digits[0]%2==0 and digits[1]%2 == 0):
+  print("Obie są patrzyste")
+if(digits[0]+digits[1] == 5):
+  print("Suma cyfr jest rowna 5")

@@ -1,0 +1,2 @@
+liczba = int(input("Wprowadź liczbe"))
+print(str(liczba)[::-1])

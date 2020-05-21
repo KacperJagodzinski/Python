@@ -1,0 +1,6 @@
+ocena1 = int(input("Podaj pierwszą ocenę: "))
+ocena2 = int(input("Podaj drugą ocenę: "))
+ocena3 = int(input("Podaj trzecią ocenę: "))
+
+srednia = (ocena1+ocena2+ocena3) / 3
+print("Twoja średnia to: " + str(srednia))

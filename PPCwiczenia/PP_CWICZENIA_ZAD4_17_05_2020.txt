@@ -1,0 +1,4 @@
+a = int(input("Wprowadź a"))
+x = int(input("Wprowadź x"))
+wynik = (x+a) / ((x-2)*(x-2))
+print(wynik)
