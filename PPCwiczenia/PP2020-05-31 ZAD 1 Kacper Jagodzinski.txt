@@ -1,0 +1,27 @@
+import requests as req
+from bs4 import BeautifulSoup
+
+#URL strony
+url = "https://bundesliga.onet.pl/bundesliga-trener-bruno-labbadia-ocenil-wystep-krzysztofa-piatka/wy25c6v"
+
+#parsing html of the page to variable page
+page = req.get(url)
+#parse to extract data from HTML
+soup = BeautifulSoup(page.content,'html.parser')
+
+#geting the text from html page class hyphenate
+text = (soup.find('p',class_="hyphenate").find(text=True))
+
+#printing the extracted text
+print(text)
+
+firstName = input("Podaj swoje imiê: ")
+lastName = input("Podaj swoje nazwisko: ")
+
+firstLetter = firstName[1]
+secondLetter = lastName[2]
+
+firstLetterCount = text.count(firstLetter)
+secondLetterCount = text.count(secondLetter)
+
+print("W tekœcie jest " + str(firstLetterCount) + " liter " + firstLetter +" oraz " + str(secondLetterCount) + " liter " + secondLetter)

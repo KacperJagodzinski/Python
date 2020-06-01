@@ -1,0 +1,42 @@
+# y = ax^2 + bx + c
+import math
+
+a = float(input("Podaj wartoœæ a: "))
+b = float(input("Podaj wartoœæ b: "))
+c = float(input("Podaj wartoœæ c: "))
+
+#obliczanie pierwiastkow
+
+delta = ((b*b) - (4*a*c))
+
+if delta == 0:
+  x0 = ((-b)/(2*a))
+  print("Delta = 0 => x0 = " + str(x0))
+elif delta > 0:
+  x1 = (-b-math.sqrt(delta))/(2*a)
+  x2 = (-b+math.sqrt(delta))/(2*a)  
+  print("Delta > 0 => x1 = % 0.1f x2 = % 0.1f" %(x1, x2))
+else:
+  print("Delta<0 brak rozwiazan rzeczywistych")
+
+
+#wartosc a
+
+b2 = float(input("Podaj wartoœæ b: "))
+c2 = float(input("Podaj wartoœæ c: "))
+
+a2 = ((b2*b2) / (4*c2))
+
+print("Funkcja ma 1 miejsce zerowe gdy a = % 0.2f" %a2)
+print("Funkcja ma 2 miejsce zerowe gdy a < % 0.1f" %a2)
+print("Funkcja nie ma miejsc zerowych gdy a > % 0.1f" %a2)
+
+
+#wartosc c
+a3 = float(input("Podaj wartoœæ a: "))
+b3 = float(input("Podaj wartoœæ b: "))
+
+c3 = ((b3*b3)/(4*a3))
+print("Funkcja ma 1 miejsce zerowe gdy c = % 0.2f" %c3)
+print("Funkcja ma 2 miejsce zerowe gdy c < % 0.2f" %c3)
+print("Funkcja nie ma miejsc zerowych gdy c > % 0.2f" %c3)

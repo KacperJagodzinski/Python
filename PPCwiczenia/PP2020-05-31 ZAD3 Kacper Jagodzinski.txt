@@ -1,0 +1,22 @@
+dictionary = {'hello': 'czeœæ','goodbye':'do widzenia'}
+
+
+pick = " "
+
+
+while pick != "a" and pick != "b":
+
+  pick = input("Wybierz \'a\' aby dodaæ s³owo do s³ownika \nWybierz \'b\' aby szukaæ t³umaczenia: ")
+
+  if(pick == "a"):
+    word = input('Podaj wyraz którego szukasz: \n')
+    if dictionary.__contains__(word):
+      print(dictionary[word])
+    else:
+      print("Nie znam tego slowa.")
+      pick = input("Aby dodaæ ten wyraz wprowadŸ \'b\'\nAby kontynuowaæ szukanie wyrazu wprowadŸ \'x\'\nAby zamkn¹æ program wprowadŸ \'a\'")
+  if(pick == "b"):
+    word = input('Podaj wyraz który chcesz wprowadziæ: \n')
+    translation = input("Podaje t³umaczenie s³ow: \n")
+    dictionary[word] = translation
+    print(dictionary)

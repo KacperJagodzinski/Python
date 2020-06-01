@@ -1,0 +1,220 @@
+import random
+
+#Gameboard array
+board = [" ", " ", " ",
+         " ", " ", " ",
+         " ", " ", " "]
+
+# game
+game_still_going = True
+
+# winner
+winner = None
+
+# current player
+current_player = "X"
+
+#computer    
+computer = True
+
+#-----------------------------------------------------------------
+
+#PLAY GAME
+def play_game():
+  global computer
+  game_mode = 0
+  while game_mode !=1 and game_mode!=2:
+    game_mode = int(input("Enter \'1\' for one players or \'2\' for two players: "))
+
+  if(game_mode == 1):
+    computer = True
+
+
+  # display initial gameboard
+  display_board()
+
+  # game loop
+  while game_still_going:
+
+    # turn
+    handle_turn(current_player)
+
+    # check if somone won
+    check_if_game_over()
+
+    # change player
+    flip_player()
+  
+  # After the game checks winner and prints result
+  if winner == "X" or winner == "O":
+    print(winner + " won.")
+  elif winner == None:
+    print("Tie.")
+
+
+#display the gameboard
+def display_board():
+  print("\n")
+  print(board[0] + " | " + board[1] + " | " + board[2] + "     1 | 2 | 3")
+  print("-" + " + " + "-" + " + " + "-" + "     - + - + - ")
+  print(board[3] + " | " + board[4] + " | " + board[5] + "     4 | 5 | 6")
+  print("-" + " + " + "-" + " + " + "-" + "     - + - + - ")
+  print(board[6] + " | " + board[7] + " | " + board[8] + "     7 | 8 | 9")
+  print("\n")
+
+
+# turn
+def handle_turn(player):
+  global computer
+  position = 0
+  # picking a position to place
+  if player!="X" and computer == True:
+    position = random.randint(1,9)
+    
+  else:
+    print(player + "'s turn.")
+    position = int(input("Choose a position from 1-9: "))
+
+  # check if the spot is clear
+  valid = False
+  while not valid:
+    # check the input
+    while position not in [1,2,3,4,5,6,7,8,9]:
+      if player!="X" and computer == True:
+        position = random.randint(1,9)
+      else:
+        print(player + "'s turn.")
+        position = int(input("Choose a position from 1-9: "))
+ 
+    # getting the array index 
+    position = int(position) - 1
+
+    # checking the spot 
+    if board[position] == " ":
+      valid = True
+    else:
+      position = 0
+      print("You can't go there. Go again.")
+
+  #puting the sign
+  board[position] = player
+
+  # display gameboard again
+  display_board()
+
+
+# checking the game status
+def check_if_game_over():
+  check_for_winner()
+  check_for_tie()
+
+
+# check for winner
+def check_for_winner():
+  #using global variables 
+  global winner
+  # checking every option
+  row_winner = check_rows()
+  column_winner = check_columns()
+  diagonal_winner = check_diagonals()
+  # set winner
+  if row_winner:
+    winner = row_winner
+  elif column_winner:
+    winner = column_winner
+  elif diagonal_winner:
+    winner = diagonal_winner
+  else:
+    winner = None
+
+
+# rows win
+def check_rows():
+  # using global variables
+  global game_still_going
+  # checking rows
+  row_1 = board[0] == board[1] == board[2] != " "
+  row_2 = board[3] == board[4] == board[5] != " "
+  row_3 = board[6] == board[7] == board[8] != " "
+  if row_1 or row_2 or row_3:
+    game_still_going = False
+  # retuning the winner sign
+  if row_1:
+    return board[0] 
+  elif row_2:
+    return board[3] 
+  elif row_3:
+    return board[6] 
+  # or none if there is no winner game goes on 
+  else:
+    return None
+
+
+# column win
+def check_columns():
+  # using global variables 
+  global game_still_going
+  # check columns
+  column_1 = board[0] == board[3] == board[6] != " "
+  column_2 = board[1] == board[4] == board[7] != " "
+  column_3 = board[2] == board[5] == board[8] != " "
+  if column_1 or column_2 or column_3:
+    game_still_going = False
+  # return winner sign
+  if column_1:
+    return board[0] 
+  elif column_2:
+    return board[1] 
+  elif column_3:
+    return board[2] 
+  # or none if there is no winner game goes on 
+  else:
+    return None
+
+
+# check diagonals
+def check_diagonals():
+  #using global variables
+  global game_still_going
+  #check columns
+  diagonal_1 = board[0] == board[4] == board[8] != " "
+  diagonal_2 = board[2] == board[4] == board[6] != " "
+  if diagonal_1 or diagonal_2:
+    game_still_going = False
+  #return winer sign
+  if diagonal_1:
+    return board[0] 
+  elif diagonal_2:
+    return board[2]
+  #or none if there is no winner game goes on 
+  else:
+    return None
+
+
+# tie game
+def check_for_tie():
+  #using global variables
+  global game_still_going
+  #checking empty spaces
+  if " " not in board:
+    game_still_going = False
+    return True
+  # else game goes on
+  else:
+    return False
+
+
+# change player
+def flip_player():
+  #using global variables 
+  global current_player
+  if current_player == "X":
+    current_player = "O"
+  elif current_player == "O":
+    current_player = "X"
+
+
+#--------------------------------------------------------
+
+
+play_game()

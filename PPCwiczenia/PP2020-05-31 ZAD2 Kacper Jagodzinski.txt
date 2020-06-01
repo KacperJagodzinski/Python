@@ -1,0 +1,34 @@
+numberList = list(range(1,101))
+print(numberList)
+
+secondList =[]
+print(secondList)
+
+halfOfLength = int((len(numberList)/2))
+length = len(numberList)
+
+for i in range(halfOfLength,length):
+  print(str(i) + " = " + str(numberList[i]))
+  secondList.append(numberList[i])
+
+for i in range(0, len(secondList)):
+  numberList.remove(secondList[i])
+
+print("First:")
+print(numberList)
+print("Second:")
+print(secondList)
+
+finalList = numberList + secondList
+
+finalList.insert(0, 0)
+
+print("Final:")
+print(finalList)
+
+copyList = list(finalList)
+
+copyList.sort(reverse=True)
+
+print("Copy:")
+print(copyList)
